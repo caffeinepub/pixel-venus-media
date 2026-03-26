@@ -6,15 +6,21 @@ const WA_LINK =
   "https://wa.me/919209604008?text=Hi%2C%20I%20want%20to%20grow%20my%20business%20with%20Pixel%20Venus%20Media";
 
 export default function ContactSection() {
-  const [form, setForm] = useState({ name: "", phone: "", message: "" });
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    occupation: "",
+    date: "",
+    message: "",
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const text = encodeURIComponent(
-      `Hi, I'm ${form.name}.\nPhone: ${form.phone}\n\n${form.message}`,
+      `Name: ${form.name}\nPhone: ${form.phone}\nOccupation: ${form.occupation}\nAppointment Date: ${form.date}\nMessage: ${form.message}`,
     );
     window.open(`https://wa.me/919209604008?text=${text}`, "_blank");
-    setForm({ name: "", phone: "", message: "" });
+    setForm({ name: "", phone: "", occupation: "", date: "", message: "" });
   };
 
   return (
@@ -63,8 +69,10 @@ export default function ContactSection() {
                 className="text-white font-bold text-xl mb-2"
                 style={{ fontFamily: "'Space Grotesk', sans-serif" }}
               >
-                Send a Message
+                Book an Appointment
               </h3>
+
+              {/* Name */}
               <div>
                 <label
                   htmlFor="contact-name"
@@ -82,6 +90,8 @@ export default function ContactSection() {
                   required
                 />
               </div>
+
+              {/* Phone */}
               <div>
                 <label
                   htmlFor="contact-phone"
@@ -100,6 +110,50 @@ export default function ContactSection() {
                   required
                 />
               </div>
+
+              {/* Occupation */}
+              <div>
+                <label
+                  htmlFor="contact-occupation"
+                  className="block text-[#B8C6CF] text-sm mb-2"
+                >
+                  Occupation / Business Type
+                </label>
+                <input
+                  id="contact-occupation"
+                  data-ocid="contact.input"
+                  className="input-glass"
+                  placeholder="e.g. Restaurant Owner, Influencer, Startup..."
+                  value={form.occupation}
+                  onChange={(e) =>
+                    setForm({ ...form, occupation: e.target.value })
+                  }
+                  required
+                />
+              </div>
+
+              {/* Appointment Date */}
+              <div>
+                <label
+                  htmlFor="contact-date"
+                  className="block text-[#B8C6CF] text-sm mb-2"
+                >
+                  Preferred Appointment Date
+                </label>
+                <input
+                  id="contact-date"
+                  data-ocid="contact.input"
+                  type="date"
+                  className="input-glass"
+                  value={form.date}
+                  min={new Date().toISOString().split("T")[0]}
+                  onChange={(e) => setForm({ ...form, date: e.target.value })}
+                  required
+                  style={{ colorScheme: "dark" }}
+                />
+              </div>
+
+              {/* Message */}
               <div>
                 <label
                   htmlFor="contact-message"
@@ -111,7 +165,7 @@ export default function ContactSection() {
                   id="contact-message"
                   data-ocid="contact.textarea"
                   className="input-glass resize-none"
-                  rows={4}
+                  rows={3}
                   placeholder="Tell us about your brand and what you want to achieve..."
                   value={form.message}
                   onChange={(e) =>
@@ -120,6 +174,7 @@ export default function ContactSection() {
                   required
                 />
               </div>
+
               <button
                 type="submit"
                 data-ocid="contact.submit_button"

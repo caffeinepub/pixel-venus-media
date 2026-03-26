@@ -68,6 +68,62 @@ export default function Footer() {
             <p className="text-[#B8C6CF] text-sm">📞 9209604008</p>
             <p className="text-[#B8C6CF] text-sm">💬 WhatsApp: 9209604008</p>
             <p className="text-[#B8C6CF] text-sm">📍 India</p>
+            {/* Instagram */}
+            <a
+              href="https://www.instagram.com/Pixel_venus_media_01"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 mt-2 group"
+              style={{ textDecoration: "none" }}
+            >
+              <svg
+                role="img"
+                aria-label="Instagram"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                style={{ flexShrink: 0 }}
+              >
+                <defs>
+                  <linearGradient
+                    id="igGrad"
+                    x1="0%"
+                    y1="100%"
+                    x2="100%"
+                    y2="0%"
+                  >
+                    <stop offset="0%" stopColor="#f09433" />
+                    <stop offset="25%" stopColor="#e6683c" />
+                    <stop offset="50%" stopColor="#dc2743" />
+                    <stop offset="75%" stopColor="#cc2366" />
+                    <stop offset="100%" stopColor="#bc1888" />
+                  </linearGradient>
+                </defs>
+                <rect
+                  x="2"
+                  y="2"
+                  width="20"
+                  height="20"
+                  rx="5"
+                  ry="5"
+                  fill="url(#igGrad)"
+                />
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="4.5"
+                  stroke="white"
+                  strokeWidth="1.5"
+                  fill="none"
+                />
+                <circle cx="17.5" cy="6.5" r="1" fill="white" />
+              </svg>
+              <span className="text-sm text-[#B8C6CF] group-hover:text-[#E1306C] transition-colors">
+                @Pixel_venus_media_01
+              </span>
+            </a>
             <p className="text-[#00C2FF] text-sm font-semibold mt-2">
               Built for brands that dare to grow.
             </p>

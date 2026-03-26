@@ -1,47 +1,47 @@
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useRef, useState } from "react";
 
 const portfolioItems = [
   {
     category: "Wedding",
     title: "Rohan & Priya's Dream Wedding",
-    gradient: "from-rose-900 to-purple-900",
+    image: "/assets/generated/portfolio-wedding1.dim_260x380.jpg",
   },
   {
     category: "Birthday",
     title: "Aanya's Grand 18th Birthday",
-    gradient: "from-amber-900 to-orange-900",
+    image: "/assets/generated/portfolio-birthday1.dim_260x380.jpg",
   },
   {
     category: "Product",
     title: "iPhone 15 Pro Unboxing Reel",
-    gradient: "from-slate-800 to-blue-900",
+    image: "/assets/generated/portfolio-product1.dim_260x380.jpg",
   },
   {
     category: "Delivery",
     title: "BMW M4 Delivery Shoot",
-    gradient: "from-zinc-800 to-gray-900",
+    image: "/assets/generated/portfolio-delivery1.dim_260x380.jpg",
   },
   {
     category: "Wedding",
     title: "Arjun & Meera's Beach Wedding",
-    gradient: "from-teal-900 to-cyan-900",
+    image: "/assets/generated/portfolio-wedding2.dim_260x380.jpg",
   },
   {
     category: "Birthday",
     title: "Raj's 25th Birthday Bash",
-    gradient: "from-fuchsia-900 to-pink-900",
+    image: "/assets/generated/portfolio-birthday2.dim_260x380.jpg",
   },
   {
     category: "Delivery",
     title: "Royal Enfield Bullet Delivery",
-    gradient: "from-green-900 to-emerald-900",
+    image: "/assets/generated/portfolio-delivery2.dim_260x380.jpg",
   },
   {
     category: "Product",
     title: "Samsung Galaxy S25 Unboxing",
-    gradient: "from-indigo-900 to-violet-900",
+    image: "/assets/generated/portfolio-product2.dim_260x380.jpg",
   },
 ];
 
@@ -124,48 +124,32 @@ export default function PortfolioSection() {
                 }}
                 onClick={() => setActive(i)}
               >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${item.gradient}`}
+                {/* Image */}
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
+
+                {/* Overlay gradient */}
                 <div
                   className="absolute inset-0"
                   style={{
-                    backgroundImage:
-                      "linear-gradient(rgba(0,194,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,194,255,0.05) 1px, transparent 1px)",
-                    backgroundSize: "30px 30px",
+                    background:
+                      "linear-gradient(to top, rgba(0,0,0,0.85) 40%, rgba(0,0,0,0.1) 100%)",
                   }}
                 />
-                <div
-                  className="absolute inset-0 flex items-center justify-center"
-                  style={{
-                    opacity: active === i ? 1 : 0.5,
-                    transition: "opacity 0.3s",
-                  }}
-                >
+
+                {/* Neon border glow on active */}
+                {active === i && (
                   <div
-                    className="w-14 h-14 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform"
-                    style={{
-                      background: "rgba(0,194,255,0.2)",
-                      border: "2px solid #00C2FF",
-                      boxShadow: "0 0 20px rgba(0,194,255,0.4)",
-                      backdropFilter: "blur(8px)",
-                    }}
-                  >
-                    <Play
-                      size={22}
-                      fill="#00C2FF"
-                      color="#00C2FF"
-                      className="ml-0.5"
-                    />
-                  </div>
-                </div>
-                <div
-                  className="absolute bottom-0 left-0 right-0 p-4"
-                  style={{
-                    background:
-                      "linear-gradient(to top, rgba(0,0,0,0.9) 60%, transparent)",
-                  }}
-                >
+                    className="absolute inset-0 rounded-2xl pointer-events-none"
+                    style={{ boxShadow: "inset 0 0 20px rgba(0,194,255,0.2)" }}
+                  />
+                )}
+
+                {/* Category & Title */}
+                <div className="absolute bottom-0 left-0 right-0 p-4">
                   <span
                     className="text-xs font-bold uppercase tracking-widest mb-1 block"
                     style={{ color: "#00C2FF" }}
